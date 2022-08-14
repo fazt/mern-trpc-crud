@@ -8,7 +8,7 @@ function NotesList() {
 
   return (
     <div>
-      {(getNotes.data || []).map((note) => (
+      {(getNotes.data || []).map((note: any) => (
         <NoteCard key={note._id} note={note} />
       ))}
     </div>
