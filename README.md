@@ -7,9 +7,20 @@ A MERN(Mongodb, Express, React, Node) CRUD application using tRPC as library to 
 * Installation requires a mongodb database connection
 
 ```
-git clone git@github.com:FaztWeb/mern-trpc-crud.git
+git clone git@github.com:faztweb/mern-trpc-crud.git
 cd mern-trpc-crud
 npm i
 npm run build # build the frontend and backend
 npm start
 ```
+Now you can visit [http://localhost:3000](http://localhost:3000)
+
+### Docker (Recommended)
+
+```
+git clone git@github.com:faztweb/mern-trpc-crud.git
+cd mern-trpc-crud
+docker-compose up
+```
+
+Now you can visit [http://localhost:3000](http://localhost:3000)
