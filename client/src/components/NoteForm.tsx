@@ -8,7 +8,7 @@ const initialState = {
 
 function NoteForm() {
   const [note, setNote] = useState(initialState);
-  const addNote = trpc.useMutation(["createNote"]);
+  const addNote = trpc.note.create.useMutation();
   const utils = trpc.useContext();
   const titleRef = useRef<HTMLInputElement>(null);
 
@@ -20,7 +20,8 @@ function NoteForm() {
     e.preventDefault();
     addNote.mutate(note, {
       onSuccess: () => {
-        utils.invalidateQueries(["getNotes"]);
+        // utils.invalidateQueries(["getNotes"]);
+        utils.note.get.invalidate()
         setNote(initialState);
         titleRef.current?.focus();
       },

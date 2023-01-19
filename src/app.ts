@@ -1,26 +1,26 @@
 import express from "express";
-import * as trpcExpress from "@trpc/server/adapters/express";
-import appRouter from "./trpc";
-import cors from "cors";
+import * as trpc from "@trpc/server";
 import path from "path";
-
+import { notesRouter } from "./routes/notes";
+import * as trpcExpress from "@trpc/server/adapters/express";
+import { publicProcedure, router, createContext } from "./trpc";
+import cors from 'cors';
 const app = express();
 
-// Middlewares
-app.use(cors());
+const appRouter = router({
+  note: notesRouter,
+});
+
+app.use(cors())
 
 app.use(
   "/trpc",
   trpcExpress.createExpressMiddleware({
     router: appRouter,
-    createContext: () => null,
+    createContext,
   })
 );
 
-app.get("/api", (req, res) => {
-  res.send("Welcome to my API");
-});
-
-app.use(express.static(path.join(__dirname, "../client/dist")));
+export type AppRouter = typeof appRouter;
 
 export default app;

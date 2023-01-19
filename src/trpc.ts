@@ -1,15 +1,15 @@
-import * as trpc from "@trpc/server";
-import { notesRoutes } from "./routes/notes";
+import { inferAsyncReturnType, initTRPC } from "@trpc/server";
+import * as trpcExpress from "@trpc/server/adapters/express";
 
-const appRouter = trpc
-  .router()
-  .query("ping", {
-    resolve() {
-      return "pong";
-    },
-  })
-  .merge(notesRoutes);
+// created for each request
+export const createContext = ({
+  req,
+  res,
+}: trpcExpress.CreateExpressContextOptions) => ({}); // no context
+type Context = inferAsyncReturnType<typeof createContext>;
 
-export type AppRouter = typeof appRouter;
+const t = initTRPC.context<Context>().create();
 
-export default appRouter;
+export const router = t.router;
+export const middleware = t.middleware;
+export const publicProcedure = t.procedure;

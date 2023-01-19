@@ -1,14 +1,19 @@
 import { useState } from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import NoteForm from "./components/NoteForm";
 import NotesList from "./components/NotesList";
 import { trpc } from "./trpc";
+import { httpBatchLink } from "@trpc/client";
 
 function App() {
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
     trpc.createClient({
-      url: "http://localhost:3000/trpc",
+      links: [
+        httpBatchLink({
+          url: "http://localhost:3000/trpc",
+        }),
+      ],
     })
   );
 

@@ -1,15 +1,15 @@
 import { trpc } from "../trpc";
 
 function NoteCard({ note }: any) {
-  const deleteNote = trpc.useMutation(["deleteNote"]);
-  const toggleNoteDone = trpc.useMutation(["toggleDone"]);
+  const deleteNote = trpc.note.delete.useMutation();
+  const toggleNoteDone = trpc.note.toggleDone.useMutation();
   const context = trpc.useContext();
 
   const onDeleteNote = () => {
     deleteNote.mutate(note._id, {
       onSuccess(data) {
         if (data) {
-          context.invalidateQueries(["getNotes"]);
+          context.note.get.invalidate();
         }
       },
       onError(error) {
@@ -22,8 +22,7 @@ function NoteCard({ note }: any) {
     toggleNoteDone.mutate(note._id, {
       onSuccess(data) {
         if (data) {
-          console.log(data)
-          context.invalidateQueries(["getNotes"]);
+          context.note.get.invalidate();
         }
       },
     });
