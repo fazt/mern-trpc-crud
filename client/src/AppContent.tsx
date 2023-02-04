@@ -1,5 +1,5 @@
-import NoteForm from "./components/NoteForm";
-import NotesList from "./components/NotesList";
+import { NoteForm } from "./components/NoteForm";
+import { NotesList } from "./components/NotesList";
 
 export function AppContent() {
   return (

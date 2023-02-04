@@ -6,7 +6,7 @@ const initialState = {
   description: "",
 };
 
-function NoteForm() {
+export function NoteForm() {
   const [note, setNote] = useState(initialState);
   const addNote = trpc.note.create.useMutation();
   const utils = trpc.useContext();
@@ -55,5 +55,3 @@ function NoteForm() {
     </form>
   );
 }
-
-export default NoteForm;

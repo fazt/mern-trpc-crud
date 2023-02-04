@@ -1,7 +1,7 @@
 import { NoteCard } from "./NoteCard";
 import { NoteCreateOutput, trpc } from "../trpc";
 
-function NotesList() {
+export function NotesList() {
   const { data, isError, isLoading, error } = trpc.note.get.useQuery();
 
   if (isLoading) return <div>Loading...</div>;
@@ -15,5 +15,3 @@ function NotesList() {
     </div>
   );
 }
-
-export default NotesList;
