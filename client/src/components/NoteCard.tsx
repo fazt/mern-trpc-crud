@@ -1,6 +1,6 @@
 import { trpc } from "../trpc";
 
-function NoteCard({ note }: any) {
+export function NoteCard({ note }: any) {
   const deleteNote = trpc.note.delete.useMutation();
   const toggleNoteDone = trpc.note.toggleDone.useMutation();
   const context = trpc.useContext();
@@ -29,18 +29,26 @@ function NoteCard({ note }: any) {
   };
 
   return (
-    <div>
-      <h1>{note.title}</h1>
-      <p>{note.description}</p>
-      <button onClick={() => onDeleteNote()}>
+    <div className="bg-zinc-800 p-2 mb-2 flex">
+      <div>
+        <h1 className="font-bold text-xl">{note.title}</h1>
+        <p>{note.description}</p>
+      </div>
+      <button
+        onClick={() => onDeleteNote()}
+        className="bg-red-500 px-3 py-2 rounded-md text-white ml-auto"
+      >
         {deleteNote.isLoading ? "Loading..." : "Delete"}
       </button>
 
-      <button onClick={() => onToggleDone()}>
+      <button
+        onClick={() => onToggleDone()}
+        className={`px-3 py-2 rounded-md text-white ml-2 ${
+          note.done ? "bg-zinc-500" : "bg-green-500"
+        }`}
+      >
         {note.done ? "Undone" : "Done"}
       </button>
     </div>
   );
 }
-
-export default NoteCard;

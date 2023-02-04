@@ -8,26 +8,26 @@
     "build:back": "tsc",
     "start": "node dist/index.js",
     "build:front": "npm run build --prefix client",
-    "build:all": "npm run build:back && npm run build:front",
+    "build:prod": "npm run build:back && npm run build:front",
     "clean": "rm -rf dist && rm -rf client/dist && rm -rf data"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@trpc/server": "^10.9.0",
-    "@typegoose/typegoose": "^10.0.0",
+    "@trpc/server": "^10.10.0",
+    "@typegoose/typegoose": "^10.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^6.8.4",
+    "mongoose": "^6.9.0",
     "zod": "^3.20.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",
-    "@types/express": "^4.17.15",
+    "@types/express": "^4.17.17",
     "@types/node": "^18.11.18",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.5"
   }
 }

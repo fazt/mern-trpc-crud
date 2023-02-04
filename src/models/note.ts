@@ -6,13 +6,17 @@ import { getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
   },
 })
 class Note {
-  @prop()
+  @prop({
+    type: String,
+  })
   title: string;
 
-  @prop()
+  @prop({
+    type: String,
+  })
   description: string;
 
-  @prop({ default: false })
+  @prop({ type: Boolean, default: false })
   done: boolean;
 }
 

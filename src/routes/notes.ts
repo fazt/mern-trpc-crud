@@ -46,6 +46,6 @@ const toggleDone = publicProcedure
 export const notesRouter = router({
   create: createNotes,
   delete: deleteNote,
-  toggleDone: toggleDone,
   get: getNotes,
+  toggleDone
 });

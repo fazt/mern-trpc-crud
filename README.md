@@ -24,3 +24,12 @@ docker-compose up
 ```
 
 Now you can visit [http://localhost:3000](http://localhost:3000)
+
+### Deployment
+
+```
+git clone git@github.com:faztweb/mern-trpc-crud.git
+cd mern-trpc-crud
+npm i
+npm run build:prod
+```

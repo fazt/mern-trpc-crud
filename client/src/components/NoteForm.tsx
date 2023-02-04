@@ -29,7 +29,7 @@ function NoteForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="bg-zinc-900 p-10 rounded-md">
       <input
         type="text"
         placeholder="Title"
@@ -38,15 +38,20 @@ function NoteForm() {
         value={note.title}
         ref={titleRef}
         autoFocus
+        className="bg-neutral-800 px-3 py-2 block w-full rounded-md mb-3"
       />
       <textarea
         placeholder="Description"
         name="description"
         onChange={handleChange}
         value={note.description}
+        className="bg-neutral-800 px-3 py-2 block w-full rounded-md mb-3"
+        rows={3}
       />
 
-      <button>Save</button>
+      <button
+        className="bg-zinc-500 px-3 py-2 rounded-md text-white"
+      >Save</button>
     </form>
   );
 }
