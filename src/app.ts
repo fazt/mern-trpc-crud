@@ -3,6 +3,8 @@ import { notesRouter } from "./routes/notes";
 import * as trpcExpress from "@trpc/server/adapters/express";
 import { router, createContext } from "./trpc";
 import cors from "cors";
+import path from "path";
+
 const app = express();
 
 const appRouter = router({
@@ -18,6 +20,8 @@ app.use(
     createContext,
   })
 );
+
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
 export type AppRouter = typeof appRouter;
 

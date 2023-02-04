@@ -1,5 +1,5 @@
 import { NoteCard } from "./NoteCard";
-import { NoteCreateOutput, trpc } from "../trpc";
+import { trpc } from "../trpc";
 
 export function NotesList() {
   const { data, isError, isLoading, error } = trpc.note.get.useQuery();
@@ -9,7 +9,7 @@ export function NotesList() {
 
   return (
     <div>
-      {(data || []).map((note: NoteCreateOutput) => (
+      {(data || []).map((note: any) => (
         <NoteCard key={note._id} note={note} />
       ))}
     </div>
