@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import NoteForm from "./components/NoteForm";
-import NotesList from "./components/NotesList";
+import { NoteList } from "./components/NotesList";
 import { trpc } from "./trpc";
 import { httpBatchLink } from "@trpc/client";
 
